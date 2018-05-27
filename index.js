@@ -6,7 +6,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 import typeDefs from './schema';
 import resolvers from './resolvers';
 
-export const schema = makeExecutableSchema({
+const schema = makeExecutableSchema({
   typeDefs,
   resolvers,
 });
@@ -20,6 +20,6 @@ const graphqlEndpoint = '/graphql';
 // bodyParser is needed just for POST.
 app.use(graphqlEndpoint, bodyParser.json(), graphqlExpress({ schema }));
 
-app.use('/graphiql', graphiqlExpress({endpointURL: graphqlEndpoint}))
+app.use('/graphiql', graphiqlExpress({ endpointURL: graphqlEndpoint }));
 
 app.listen(PORT);
